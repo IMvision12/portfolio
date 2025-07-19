@@ -134,32 +134,65 @@ export default function SimpleCentered() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left side - Text content */}
             <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl font-[var(--font-display)]">
-                AI/ML Engineer & Researcher
-              </h1>
-              <h2 className="mt-6 text-2xl font-medium text-[#a0a0a0] sm:text-3xl">
-                Building intelligent systems that understand, learn, and adapt
-              </h2>
-              <p className="mt-8 text-lg font-medium text-pretty text-[#a0a0a0] sm:text-xl/8">
-                Specialized in deep learning, computer vision, and natural language processing. 
-                I design and implement cutting-edge AI solutions that push the boundaries of what's possible 
-                with machine intelligence.
-              </p>
-              <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
+              <div className="space-y-8">
+                {/* Improved greeting */}
+                <div className="flex items-center justify-center lg:justify-start space-x-4 mb-6">
+                  <div className="w-3 h-3 bg-[#00ff88] rounded-full animate-pulse"></div>
+                  <span className="text-[#00ff88] text-3xl font-medium">Hello there</span>
+                  <span className="text-2xl animate-wave">👋</span>
+                </div>
+                
+                {/* Name with better styling */}
+                <div className="space-y-4">
+                  <h1 className="text-6xl sm:text-8xl font-bold tracking-tight text-white">
+                    <span className="bg-gradient-to-r from-white to-[#a0a0a0] bg-clip-text text-transparent">
+                      I'm Gitesh
+                    </span>
+                  </h1>
+                </div>
+                
+                {/* Role with enhanced styling */}
+                <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+                  <span className="bg-gradient-to-r from-[#00ff88] to-[#00cc6a] bg-clip-text text-transparent">
+                    AI/ML Engineer
+                  </span>
+                  <br />
+                  <span className="text-[#00ff88]/80 text-2xl sm:text-4xl">& Researcher</span>
+                </h2>
+                
+                {/* Tagline */}
+                <h3 className="text-xl sm:text-2xl font-medium text-[#a0a0a0] leading-relaxed">
+                  Building intelligent systems that{' '}
+                  <span className="text-[#00ff88]">understand</span>,{' '}
+                  <span className="text-[#00ff88]">learn</span>, and{' '}
+                  <span className="text-[#00ff88]">adapt</span>
+                </h3>
+                
+                {/* Description */}
+                <p className="text-lg text-[#808080] leading-relaxed max-w-2xl">
+                  Specialized in deep learning, computer vision, and natural language processing. 
+                  I design and implement cutting-edge AI solutions that push the boundaries of what's possible 
+                  with machine intelligence.
+                </p>
+              </div>
+              
+              {/* Action buttons */}
+              <div className="mt-12 flex items-center justify-center lg:justify-start gap-x-6">
                 <a
                   href="https://github.com/IMvision12"
                   target="_blank" rel="noopener noreferrer"
-                  className="rounded-md bg-[#00ff88] px-3.5 py-2.5 text-sm font-semibold text-[#0a0a0a] shadow-xs hover:bg-[#00ff88]/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00ff88] transition-all duration-200"
+                  className="group relative overflow-hidden rounded-lg bg-[#00ff88] px-6 py-3 text-sm font-semibold text-[#0a0a0a] shadow-lg hover:shadow-[#00ff88]/25 transition-all duration-300 hover:scale-105"
                 >
-                  Github
+                  <span className="relative z-10">View GitHub</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#00ff88] to-[#00cc6a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
                 
                 <a 
                   href="/resume.pdf" 
                   download="resume.pdf"
-                  className="inline-flex items-center gap-2 rounded-md border border-[#00ff88] px-3.5 py-2.5 text-sm font-semibold text-[#00ff88] hover:bg-[#00ff88]/10 transition-all duration-200"
+                  className="group inline-flex items-center gap-2 rounded-lg border-2 border-[#00ff88]/50 px-6 py-3 text-sm font-semibold text-[#00ff88] hover:border-[#00ff88] hover:bg-[#00ff88]/5 transition-all duration-300"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
                   Download Resume
                 </a>
               </div>
@@ -186,6 +219,16 @@ export default function SimpleCentered() {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-10px) rotate(270deg); }
         }
+        @keyframes wave {
+          0% { transform: rotate(0deg); }
+          10% { transform: rotate(14deg); }
+          20% { transform: rotate(-8deg); }
+          30% { transform: rotate(14deg); }
+          40% { transform: rotate(-4deg); }
+          50% { transform: rotate(10deg); }
+          60% { transform: rotate(0deg); }
+          100% { transform: rotate(0deg); }
+        }
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
         }
@@ -194,6 +237,11 @@ export default function SimpleCentered() {
         }
         .animate-float-fast {
           animation: float-fast 4s ease-in-out infinite;
+        }
+        .animate-wave {
+          animation: wave 2s ease-in-out infinite;
+          transform-origin: 70% 70%;
+          display: inline-block;
         }
       `}</style>
     </div>
