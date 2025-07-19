@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { GitFork, Star, GitPullRequest } from 'lucide-react'
+import { GitPullRequest } from 'lucide-react'
 
 const contributions = [
   {
@@ -133,18 +133,6 @@ export default function OpenSourceContributions() {
               </div>
 
               <div className="flex items-center gap-4 border-t border-[#00ff88]/20 px-6 py-4">
-                {project.stats.stars && (
-                  <div className="flex items-center gap-1 text-[#a0a0a0]">
-                    <Star className="h-4 w-4" />
-                    <span>{project.stats.stars}</span>
-                  </div>
-                )}
-                {project.stats.forks && (
-                  <div className="flex items-center gap-1 text-[#a0a0a0]">
-                    <GitFork className="h-4 w-4" />
-                    <span>{project.stats.forks}</span>
-                  </div>
-                )}
                 <div className="flex items-center gap-1 text-[#a0a0a0]">
                   <GitPullRequest className="h-4 w-4" />
                   <span>{project.stats.prs}</span>
