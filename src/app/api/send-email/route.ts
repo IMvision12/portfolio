@@ -23,7 +23,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<EmailResp
     const body: EmailRequest = await request.json();
     const { email, message } = body;
       
-    // Validate input
     if (!email || !message) {
       return NextResponse.json(
         { error: 'Email and message are required' },
@@ -31,7 +30,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<EmailResp
       );
     }
 
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -40,7 +38,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<EmailResp
       );
     }
 
-    // Check message length
     if (message.length < 10) {
       return NextResponse.json(
         { error: 'Message must be at least 10 characters long' },
@@ -55,9 +52,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<EmailResp
       );
     }
 
-    // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>', // Use your verified domain once you have one
+      from: 'Contact Form <onboarding@resend.dev>',
       to: ['gitesh12ch@gmail.com'],
       subject: 'New Contact Form Message',
       html: `
@@ -119,7 +115,7 @@ ${message}
 This message was sent from your portfolio contact form.
 Reply directly to this email to respond to the sender.
       `,
-      replyTo: email, // This allows you to reply directly to the sender
+      replyTo: email,
     });
 
     if (error) {
@@ -148,7 +144,6 @@ Reply directly to this email to respond to the sender.
   }
 }
 
-// Handle unsupported methods
 export async function GET(): Promise<NextResponse<ErrorResponse>> {
   return NextResponse.json(
     { error: 'Method not allowed' },

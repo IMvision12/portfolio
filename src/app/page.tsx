@@ -34,7 +34,6 @@ export default function Page() {
     <div className="relative">
       <AnimatedRobot scrollPosition={scrollPosition} currentSection={currentSection} />
 
-      {/* Main Content */}
       <div id="hero">
         <SimpleCentered />
       </div>

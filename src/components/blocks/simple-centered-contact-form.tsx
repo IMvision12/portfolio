@@ -42,7 +42,6 @@ export function SimpleCenteredContactForm() {
     },
   ];
 
-  // Track mouse position for interactive effects
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -66,7 +65,6 @@ export function SimpleCenteredContactForm() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate API call - replace with your actual API endpoint
     setTimeout(() => {
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -78,14 +76,12 @@ export function SimpleCenteredContactForm() {
 
   return (
     <div className="bg-background w-full min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Subtle animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-32 h-32 bg-primary/5 rounded-full blur-2xl animate-pulse"></div>
         <div className="absolute bottom-32 left-20 w-40 h-40 bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary/3 rounded-full blur-xl animate-ping"></div>
       </div>
 
-      {/* Interactive mouse follower */}
       <div 
         className="fixed w-4 h-4 bg-primary rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-100 ease-out opacity-30"
         style={{
@@ -97,7 +93,6 @@ export function SimpleCenteredContactForm() {
 
       <div className="flex relative px-4 z-20 items-center w-full justify-center py-10">
         <div className="flex flex-col md:flex-row gap-8 w-full max-w-[900px]">
-          {/* Form Section */}
           <div className="flex-1 max-w-[600px]">
             <div className="bg-card px-4 md:px-10 py-8 rounded-3xl border border-border shadow-2xl hover:shadow-primary/5 transition-all duration-500">
               <div>
@@ -116,7 +111,6 @@ export function SimpleCenteredContactForm() {
               <div className="py-10">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-4">
-                    {/* Name Field */}
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                         Name
@@ -136,7 +130,6 @@ export function SimpleCenteredContactForm() {
                       />
                     </div>
 
-                    {/* Email Field */}
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                         Email
@@ -156,7 +149,6 @@ export function SimpleCenteredContactForm() {
                       />
                     </div>
                   
-                    {/* Message Field */}
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                         Message
@@ -177,7 +169,6 @@ export function SimpleCenteredContactForm() {
                     </div>
                   </div>
 
-                  {/* Status Messages */}
                   {submitStatus === 'success' && (
                     <div className="p-4 rounded-md bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-pulse">
                       <p className="text-green-800 dark:text-green-300 text-sm flex items-center gap-2">
@@ -223,7 +214,6 @@ export function SimpleCenteredContactForm() {
             </div>
           </div>
 
-          {/* Social Links Section */}
           <div className="w-full md:w-64 self-start mt-0 md:mt-16">
             <div className="bg-card px-6 py-8 rounded-3xl border border-border shadow-2xl">
               <h3 className="text-xl font-semibold mb-6 text-foreground text-center">Connect With Me</h3>

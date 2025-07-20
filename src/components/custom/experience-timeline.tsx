@@ -91,12 +91,9 @@ export default function ExperienceTimeline() {
           </p>
         </motion.div>
 
-        {/* Mobile Layout */}
         <div className="relative md:hidden">
-          {/* Mobile Timeline Line */}
           <div className="absolute left-8 w-0.5 bg-primary h-full opacity-80" />
 
-          {/* Mobile Timeline Items */}
           <div className="space-y-8">
             {experienceData.map((item, index) => {
               const isVisible = visibleItems.has(item.id)
@@ -112,11 +109,9 @@ export default function ExperienceTimeline() {
                   transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className="relative flex items-center"
                 >
-                  {/* Mobile Content Card */}
                   <div className="w-full pl-20">
                     <Card className="bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
                       <div className="p-4">
-                        {/* Header */}
                         <div className="flex items-start gap-3 mb-4">
                           <div className="w-10 h-10 bg-secondary rounded-lg border border-border flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300 flex-shrink-0">
                             <Building2 className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
@@ -136,7 +131,6 @@ export default function ExperienceTimeline() {
                           </div>
                         </div>
 
-                        {/* Achievements */}
                         <div className="space-y-2">
                           {item.achievements.map((achievement, achievementIndex) => (
                             <motion.div
@@ -155,7 +149,6 @@ export default function ExperienceTimeline() {
                     </Card>
                   </div>
 
-                  {/* Mobile Timeline Node */}
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={isVisible ? { scale: 1 } : {}}
@@ -171,7 +164,6 @@ export default function ExperienceTimeline() {
             })}
           </div>
 
-          {/* Mobile Timeline End Indicator */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -182,12 +174,9 @@ export default function ExperienceTimeline() {
           </motion.div>
         </div>
 
-        {/* Desktop Layout */}
         <div className="relative hidden md:block">
-          {/* Desktop Central Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-primary h-full opacity-80" />
 
-          {/* Desktop Timeline Items */}
           <div className="space-y-16">
             {experienceData.map((item, index) => {
               const isLeft = index % 2 === 0
@@ -204,11 +193,9 @@ export default function ExperienceTimeline() {
                   transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className={`relative flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
                 >
-                  {/* Desktop Content Card */}
                   <div className={`w-7/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
                     <Card className="bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
                       <div className="p-6">
-                        {/* Header */}
                         <div className="flex items-start gap-4 mb-4">
                           <div className="w-12 h-12 bg-secondary rounded-lg border border-border flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
                             <Building2 className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
@@ -228,7 +215,6 @@ export default function ExperienceTimeline() {
                           </div>
                         </div>
 
-                        {/* Achievements */}
                         <div className="space-y-3">
                           {item.achievements.map((achievement, achievementIndex) => (
                             <motion.div
@@ -247,7 +233,6 @@ export default function ExperienceTimeline() {
                     </Card>
                   </div>
 
-                  {/* Desktop Timeline Node */}
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={isVisible ? { scale: 1 } : {}}
@@ -259,14 +244,12 @@ export default function ExperienceTimeline() {
                     </div>
                   </motion.div>
 
-                  {/* Desktop Spacer for opposite side */}
                   <div className="w-8/12" />
                 </motion.div>
               )
             })}
           </div>
 
-          {/* Desktop Timeline End Indicator */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

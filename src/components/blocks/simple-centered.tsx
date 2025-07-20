@@ -18,21 +18,17 @@ export default function SimpleCentered() {
 
   return (
     <div className="bg-[#0a0a0a] min-h-screen relative overflow-hidden">
-      {/* Animated Background Shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Floating geometric shapes */}
         <div className="absolute top-20 left-10 w-12 h-12 border border-[#00ff88]/20 rounded-full animate-float-slow"></div>
         <div className="absolute top-40 right-20 w-8 h-8 bg-[#00ff88]/10 rotate-45 animate-float-medium"></div>
         <div className="absolute top-60 left-1/4 w-16 h-16 border border-[#00ff88]/15" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
         <div className="absolute bottom-40 right-10 w-10 h-10 border border-[#00ff88]/20 rotate-12" style={{clipPath: 'polygon(30% 0%, 0% 50%, 30% 100%, 100% 100%, 70% 50%, 100% 0%)'}}></div>
         <div className="absolute bottom-20 left-16 w-14 h-14 border border-[#00ff88]/10 rounded-full animate-float-fast"></div>
         
-        {/* Particle effects with connecting lines */}
         <div className="absolute top-32 left-1/3 w-2 h-2 bg-[#00ff88] rounded-full animate-pulse"></div>
         <div className="absolute top-52 left-1/2 w-1 h-1 bg-[#00ff88]/70 rounded-full animate-pulse delay-300"></div>
         <div className="absolute bottom-32 right-1/3 w-1.5 h-1.5 bg-[#00ff88]/80 rounded-full animate-pulse delay-700"></div>
         
-        {/* Neural network connection lines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
           <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="#00ff88" strokeWidth="1" opacity="0.3">
             <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite"/>
@@ -131,19 +127,15 @@ export default function SimpleCentered() {
             </div>
           </div>
           
-          {/* Main content container with grid layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left side - Text content */}
             <div className="text-center lg:text-left">
               <div className="space-y-8">
-                {/* Improved greeting */}
                 <div className="flex items-center justify-center lg:justify-start space-x-4 mb-6">
                   <div className="w-3 h-3 bg-[#00ff88] rounded-full animate-pulse"></div>
                   <span className="text-[#00ff88] text-3xl font-medium">Hello there</span>
                   <span className="text-2xl animate-wave">👋</span>
                 </div>
                 
-                {/* Name with better styling */}
                 <div className="space-y-4">
                   <h1 className="text-6xl sm:text-8xl font-bold tracking-tight text-white">
                     <span className="bg-gradient-to-r from-white to-[#a0a0a0] bg-clip-text text-transparent">
@@ -152,7 +144,6 @@ export default function SimpleCentered() {
                   </h1>
                 </div>
                 
-                {/* Role with enhanced styling */}
                 <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
                   <span className="bg-gradient-to-r from-[#00ff88] to-[#00cc6a] bg-clip-text text-transparent">
                     AI/ML Engineer
@@ -161,7 +152,6 @@ export default function SimpleCentered() {
                   <span className="text-[#00ff88]/80 text-2xl sm:text-4xl">& Researcher</span>
                 </h2>
                 
-                {/* Tagline */}
                 <h3 className="text-xl sm:text-2xl font-medium text-[#a0a0a0] leading-relaxed">
                   Building intelligent systems that{' '}
                   <span className="text-[#00ff88]">understand</span>,{' '}
@@ -169,7 +159,6 @@ export default function SimpleCentered() {
                   <span className="text-[#00ff88]">adapt</span>
                 </h3>
                 
-                {/* Description */}
                 <p className="text-lg text-[#808080] leading-relaxed max-w-2xl">
                   Specialized in deep learning, computer vision, and natural language processing. 
                   I design and implement cutting-edge AI solutions that push the boundaries of what's possible 
@@ -177,7 +166,6 @@ export default function SimpleCentered() {
                 </p>
               </div>
               
-              {/* Action buttons */}
               <div className="mt-12 flex items-center justify-center lg:justify-start gap-x-6">
                 <a
                   href="https://github.com/IMvision12"
@@ -199,7 +187,6 @@ export default function SimpleCentered() {
               </div>
             </div>
 
-            {/* Right side - Python Code Box */}
             <div className="flex justify-center lg:justify-end">
               <PythonCodeBox />
             </div>

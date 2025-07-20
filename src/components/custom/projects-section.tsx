@@ -82,7 +82,6 @@ export default function ProjectsSection() {
   return (
     <section className="bg-background py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +101,6 @@ export default function ProjectsSection() {
           />
         </motion.div>
 
-        {/* Projects Grid */}
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           variants={containerVariants}
@@ -120,7 +118,6 @@ export default function ProjectsSection() {
               }}
             >
               <Card className="bg-card border-border overflow-hidden group hover:bg-card/80 transition-all duration-300">
-                {/* Project Image - UPDATED SECTION */}
                 <div className="relative overflow-hidden">
                   <div className="aspect-[16/10] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
                     {project.image ? (
@@ -129,7 +126,6 @@ export default function ProjectsSection() {
                         alt={project.title}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          // Fallback to icon if image fails to load
                           const target = e.currentTarget;
                           target.style.display = 'none';
                           const fallbackDiv = document.createElement('div');
@@ -150,17 +146,14 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="p-5">
-                  {/* Project Title */}
                   <h3 className="text-lg font-bold text-foreground font-[var(--font-display)] mb-2 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
 
-                  {/* Project Description */}
                   <p className="text-secondary-foreground mb-3 leading-relaxed text-sm">
                     {project.description}
                   </p>
 
-                  {/* Technology Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tags.map((tag) => (
                       <Badge 
@@ -173,7 +166,6 @@ export default function ProjectsSection() {
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
                   <div className="flex gap-2">
                     <Button 
                       size="sm" 
@@ -199,7 +191,6 @@ export default function ProjectsSection() {
           ))}
         </motion.div>
 
-        {/* View More Projects CTA */}
         <motion.div 
           className="text-center mt-12"
           initial={{ opacity: 0, y: 20 }}
