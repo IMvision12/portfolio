@@ -34,7 +34,7 @@ const projects = [
     description: "This project is a comprehensive real-time bus tracking application that leverages modern web technologies and big data processing to provide live bus location tracking and analytics.",
     image: "/images/bus.jpg",
     tags: ["Python", "Javascript", "Leaflet.js", "Flask", "Hadoop", "HDFS"],
-    github: "https://github.com/user/medical-cv",
+    github: "https://github.com/IMvision12/Real-time-tracking",
   }
 ]
 
@@ -211,4 +211,5 @@ export default function ProjectsSection() {
       </div>
     </section>
   )
+
 }
