@@ -30,11 +30,11 @@ const projects = [
     github: "https://github.com/IMvision12/Image-Super-Resolution",
   },
   {
-    title: "Real Time Tracking",
-    description: "This project is a comprehensive real-time bus tracking application that leverages modern web technologies and big data processing to provide live bus location tracking and analytics.",
-    image: "/images/bus.jpg",
-    tags: ["Python", "Javascript", "Leaflet.js", "Flask", "Hadoop", "HDFS"],
-    github: "https://github.com/IMvision12/Real-time-tracking",
+    title: "YOLOv5 & YOLOv8 Implementation in Keras 3",
+    description: "A complete from-scratch implementation of YOLOv5 and YOLOv8 object detection models in Keras 3, including utilities for converting pretrained PyTorch weights for seamless usage in Keras.",
+    image: "/images/bird.png",
+    tags: ["Keras", "ultralytics", "numpy"],
+    github: "https://github.com/IMvision12/yolo-keras",
   }
 ]
 
@@ -119,12 +119,12 @@ export default function ProjectsSection() {
             >
               <Card className="bg-card border-border overflow-hidden group hover:bg-card/80 transition-all duration-300">
                 <div className="relative overflow-hidden">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center min-h-[200px]">
                     {project.image ? (
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-contain max-h-[300px]"
                         onError={(e) => {
                           const target = e.currentTarget;
                           target.style.display = 'none';
@@ -211,5 +211,4 @@ export default function ProjectsSection() {
       </div>
     </section>
   )
-
 }
