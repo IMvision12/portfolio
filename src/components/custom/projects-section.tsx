@@ -23,11 +23,11 @@ const projects = [
     github: "https://github.com/IMvision12/RAG-LlamaIndex",
   },
   {
-    title: "Image Super Resolution Using EDSR and SRGAN",
-    description: "Implementation of EDSR and SRGAN reseach papers for image super-resolution tasks. This project demonstrates how to enhance the resolution of images using deep learning techniques, providing a practical application of convolutional neural networks in computer vision.",
-    image: "/images/sr.png",
-    tags: ["Tensorflow", "Keras"],
-    github: "https://github.com/IMvision12/Image-Super-Resolution",
+    title: "Trinix 🚀",
+    description: "Triton-accelerated PyTorch layers with automatic fallback optimization. Trinix intelligently selects between Flash Attention, Triton kernels, and PyTorch backends based on hardware capabilities and workload characteristics, with graceful fallback for maximum compatibility.",
+    image: "/images/triton.png",
+    tags: ["Pytorch", "Triton", "Flash Attention"],
+    github: "https://github.com/IMvision12/trinix",
   },
   {
     title: "YOLOv5 & YOLOv8 Implementation in Keras 3",
