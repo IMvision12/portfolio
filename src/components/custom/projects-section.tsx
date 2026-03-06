@@ -9,6 +9,13 @@ import { Github, BarChart3, Zap, Activity, TrendingUp } from "lucide-react"
 
 const projects = [
   {
+    title: "txtcode: </> Code from your phone control any coding CLI via WhatsApp, Telegram, Discord, Slack, Teams, or Signal",
+    description: "txtcode lets you control AI coding agents from messaging apps like WhatsApp, Telegram, or Discord just send a text and your AI writes, edits, or tests code on your computer. 🚀",
+    image: "/images/bird.png",
+    tags: ["Typescript", "cli", "agentic ai"],
+    github: "https://github.com/IMvision12/txtcode",
+  },
+  {
     title: "Keras Vision Models",
     description: "Keras Vision Models Library (KVMM), a comprehensive library of vision models with pre-trained weights entirely in Keras 3. KVMM supports a wide range of computer vision tasks including segmentation, classification, and vision-language modeling.",
     image: "/images/keras.jpg",
@@ -29,13 +36,6 @@ const projects = [
     tags: ["Pytorch", "Triton", "Flash Attention"],
     github: "https://github.com/IMvision12/trinix",
   },
-  {
-    title: "YOLOv5 & YOLOv8 Implementation in Keras 3",
-    description: "A complete from-scratch implementation of YOLOv5 and YOLOv8 object detection models in Keras 3, including utilities for converting pretrained PyTorch weights for seamless usage in Keras.",
-    image: "/images/bird.png",
-    tags: ["Keras", "ultralytics", "numpy"],
-    github: "https://github.com/IMvision12/yolo-keras",
-  }
 ]
 
 const containerVariants: Variants = {
@@ -211,4 +211,5 @@ export default function ProjectsSection() {
       </div>
     </section>
   )
+
 }
