@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface EmailRequest {
   email: string;
   message: string;
@@ -18,6 +16,7 @@ interface ErrorResponse {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse<EmailResponse | ErrorResponse>> {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
   try {
     const body: EmailRequest = await request.json();

@@ -9,9 +9,9 @@ import { Github, BarChart3, Zap, Activity, TrendingUp } from "lucide-react"
 
 const projects = [
   {
-    title: "txtcode: </> Code from your phone control any coding CLI via WhatsApp, Telegram, Discord, Slack, Teams, or Signal",
-    description: "txtcode lets you control AI coding agents from messaging apps like WhatsApp, Telegram, or Discord just send a text and your AI writes, edits, or tests code on your computer. 🚀",
-    image: "/images/bird.png",
+    title: "</> txtcode",
+    description: "txtcode lets you text AI coding agents like Claude Code, Cursor CLI, Gemini CLI, or OpenAI Codex from apps like WhatsApp or Telegram so your message turns into real code running on your machine. 🚀",
+    image: "/images/logo.jpg",
     tags: ["Typescript", "cli", "agentic ai"],
     github: "https://github.com/IMvision12/txtcode",
   },
