@@ -16,11 +16,11 @@ const projects = [
     github: "https://github.com/IMvision12/txtcode",
   },
   {
-    title: "Keras Vision Models",
-    description: "Keras Vision Models Library (KVMM), a comprehensive library of vision models with pre-trained weights entirely in Keras 3. KVMM supports a wide range of computer vision tasks including segmentation, classification, and vision-language modeling.",
+    title: "KerasFormers",
+    description: "KerasFormers: Open-source Keras 3 collection of pretrained models across Vision, VLM, Depth, Speech, and more",
     image: "/images/keras.jpg",
     tags: ["Keras3", "Timm", "Transfromers"],
-    github: "https://github.com/IMvision12/keras-vision-models",
+    github: "https://github.com/IMvision12/KerasFormers",
   },
   {
     title: "Chat with PDFs using LLMs",
