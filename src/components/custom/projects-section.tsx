@@ -23,11 +23,11 @@ const projects = [
     github: "https://github.com/IMvision12/KerasFormers",
   },
   {
-    title: "Chat with PDFs using LLMs",
-    description: "A AI agent built using LlamaIndex that leverages RAG (Retrieval-Augmented Generation) architecture along with Llama-2 and sentence transformers to create an efficient search and summarization tool for PDF documents. This tool allows users to query information from PDF files using natural language and obtain relevant answers or summaries.",
-    image: "/images/chat-pdf.png",
-    tags: ["Transformers", "Langchain", "Llama-Index"],
-    github: "https://github.com/IMvision12/RAG-LlamaIndex",
+    title: "LocalML",
+    description: "Electron desktop app for running any HuggingFace model locally. Browse the Hub, download, and execute -> object detection, segmentation, classification, ASR, image captioning, VLM chat, text generation, text-to-image, on your own machine via a Python sidecar.",
+    image: "/images/localml.png",
+    tags: ["ElectronJS", "ReactJS", "Transformers", "HuggingFace"],
+    github: "https://github.com/IMvision12/localml-app",
   },
   {
     title: "Trinix 🚀",
