@@ -23,11 +23,11 @@ const projects = [
     github: "https://github.com/IMvision12/KerasFormers",
   },
   {
-    title: "LocalML",
+    title: "InferML",
     description: "Electron desktop app for running any HuggingFace model locally. Browse the Hub, download, and execute -> object detection, segmentation, classification, ASR, image captioning, VLM chat, text generation, text-to-image, on your own machine via a Python sidecar.",
-    image: "/images/localml.png",
+    image: "/images/inferml.png",
     tags: ["ElectronJS", "ReactJS", "Transformers", "HuggingFace"],
-    github: "https://github.com/IMvision12/localml-app",
+    github: "https://github.com/IMvision12/InferML",
   },
   {
     title: "Trinix 🚀",
