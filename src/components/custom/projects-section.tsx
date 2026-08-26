@@ -16,11 +16,11 @@ const projects = [
     github: "https://github.com/IMvision12/txtcode",
   },
   {
-    title: "KerasFormers",
-    description: "KerasFormers: Open-source Keras 3 collection of pretrained models across Vision, VLM, Depth, Speech, and more",
+    title: "ZeroModels",
+    description: "ZeroModels: Open-source Keras 3 collection of pretrained models across Vision, VLM, Depth, Speech, and more",
     image: "/images/keras.jpg",
     tags: ["Keras3", "Timm", "Transfromers"],
-    github: "https://github.com/IMvision12/KerasFormers",
+    github: "https://github.com/IMvision12/ZeroModels",
   },
   {
     title: "InferML",
