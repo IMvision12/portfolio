@@ -1,10 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Building2, Code, Zap } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { Code, Zap } from 'lucide-react'
 
 interface ExperienceItem {
   id: string
@@ -17,6 +14,20 @@ interface ExperienceItem {
 }
 
 const experienceData: ExperienceItem[] = [
+  {
+    id: "afterquery",
+    title: "AI Software Engineer (Contract)",
+    company: "AfterQuery Experts",
+    duration: "September 2026 - Present",
+    location: "Remote",
+    icon: Code,
+    achievements: [
+      "Benchmarked Muon optimizer kernels on NVIDIA H100 GPUs, achieving 3.85-4.17x speedup and 74-76% lower latency while validating BF16 Newton-Schulz accuracy against correctness oracles.",
+      "Created PyTorch, CUDA, and Triton MoE dispatch/combine tests covering top-k routing, expert capacity, token packing, and FP32 accumulation, with reference-output checks and calibrated speedup scoring.",
+      "Stress-tested multi-query attention during decoding, identifying causal masking and ragged KV-cache memory-safety edge cases with compute-sanitizer checks.",
+      "Authored and reviewed AI coding-agent tasks for Projects Corgi and Gold, assessing algorithmic efficiency, API compatibility, concurrency safety, and regression coverage; ranked among Project Corgi's top 40 contributors.",
+    ]
+  },
   {
     id: "1",
     title: "Technology Analyst - SDE",
@@ -50,214 +61,40 @@ const experienceData: ExperienceItem[] = [
 ]
 
 export default function ExperienceTimeline() {
-  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set())
-  const observerRef = useRef<IntersectionObserver | null>(null)
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleItems((prev) => new Set([...prev, entry.target.id]))
-          }
-        })
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "50px"
-      }
-    )
-
-    const itemElements = document.querySelectorAll("[data-timeline-item]")
-    itemElements.forEach((el) => observerRef.current?.observe(el))
-
-    return () => observerRef.current?.disconnect()
-  }, [])
-
   return (
-    <section className="bg-background py-12 md:py-24 px-4 md:px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
-        >
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4 font-[var(--font-display)]">
-            Professional Experience
-          </h2>
-          <p className="text-secondary-foreground text-base md:text-lg max-w-2xl mx-auto">
-            A journey through cutting-edge AI/ML roles, from research breakthroughs to production systems at scale
-          </p>
-        </motion.div>
+    <section className="bg-background px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="font-[var(--font-display)] text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Experience</h2>
+        <p className="mt-5 text-base text-muted-foreground">From GPU kernels to production software.</p>
 
-        <div className="relative md:hidden">
-          <div className="absolute left-8 w-0.5 bg-primary h-full opacity-80" />
-
-          <div className="space-y-8">
-            {experienceData.map((item, index) => {
-              const isVisible = visibleItems.has(item.id)
-              const IconComponent = item.icon
-
-              return (
-                <motion.div
-                  key={item.id}
-                  id={item.id}
-                  data-timeline-item
-                  initial={{ opacity: 0, x: -50, scale: 0.8 }}
-                  animate={isVisible ? { opacity: 1, x: 0, scale: 1 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="relative flex items-center"
-                >
-                  <div className="w-full pl-20">
-                    <Card className="bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
-                      <div className="p-4">
-                        <div className="flex items-start gap-3 mb-4">
-                          <div className="w-10 h-10 bg-secondary rounded-lg border border-border flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300 flex-shrink-0">
-                            <Building2 className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-bold text-foreground mb-1 font-[var(--font-display)] group-hover:text-primary transition-colors duration-300">
-                              {item.title}
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground mb-2">
-                              <span className="font-medium">{item.company}</span>
-                              <span>•</span>
-                              <span>{item.location}</span>
-                            </div>
-                            <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/30">
-                              {item.duration}
-                            </Badge>
-                          </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          {item.achievements.map((achievement, achievementIndex) => (
-                            <motion.div
-                              key={achievementIndex}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                              transition={{ duration: 0.5, delay: 0.4 + (achievementIndex * 0.1) }}
-                              className="flex items-start gap-3 text-xs text-muted-foreground"
-                            >
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                              <span className="leading-relaxed">{achievement}</span>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={isVisible ? { scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 300 }}
-                    className="absolute left-8 transform -translate-x-1/2 z-10"
-                  >
-                    <div className="w-12 h-12 bg-card border-4 border-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group cursor-pointer">
-                      <IconComponent className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )
-            })}
-          </div>
-
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            className="absolute left-8 bottom-0 translate-y-8 transform -translate-x-1/2"
-          >
-            <div className="w-4 h-4 bg-primary rounded-full animate-pulse" />
-          </motion.div>
-        </div>
-
-        <div className="relative hidden md:block">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-primary h-full opacity-80" />
-
-          <div className="space-y-16">
-            {experienceData.map((item, index) => {
-              const isLeft = index % 2 === 0
-              const isVisible = visibleItems.has(item.id)
-              const IconComponent = item.icon
-
-              return (
-                <motion.div
-                  key={item.id}
-                  id={item.id}
-                  data-timeline-item
-                  initial={{ opacity: 0, x: isLeft ? -100 : 100, scale: 0.8 }}
-                  animate={isVisible ? { opacity: 1, x: 0, scale: 1 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className={`relative flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className={`w-7/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
-                    <Card className="bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
-                      <div className="p-6">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="w-12 h-12 bg-secondary rounded-lg border border-border flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                            <Building2 className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-xl font-bold text-foreground mb-1 font-[var(--font-display)] group-hover:text-primary transition-colors duration-300">
-                              {item.title}
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-2">
-                              <span className="font-medium">{item.company}</span>
-                              <span>•</span>
-                              <span>{item.location}</span>
-                            </div>
-                            <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/30">
-                              {item.duration}
-                            </Badge>
-                          </div>
-                        </div>
-
-                        <div className="space-y-3">
-                          {item.achievements.map((achievement, achievementIndex) => (
-                            <motion.div
-                              key={achievementIndex}
-                              initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
-                              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                              transition={{ duration: 0.5, delay: 0.4 + (achievementIndex * 0.1) }}
-                              className="flex items-start gap-3 text-sm text-muted-foreground"
-                            >
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                              <span className="leading-relaxed">{achievement}</span>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={isVisible ? { scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 300 }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-10"
-                  >
-                    <div className="w-16 h-16 bg-card border-4 border-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group cursor-pointer">
-                      <IconComponent className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                  </motion.div>
-
-                  <div className="w-8/12" />
-                </motion.div>
-              )
-            })}
-          </div>
-
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            className="absolute left-1/2 transform -translate-x-1/2 bottom-0 translate-y-8"
-          >
-            <div className="w-4 h-4 bg-primary rounded-full animate-pulse" />
-          </motion.div>
+        <div className="mt-12 sm:mt-16">
+          {experienceData.map((item) => (
+            <motion.article
+              key={item.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4 }}
+              className="grid gap-5 border-b border-border py-8 first:pt-0 md:grid-cols-[220px_1fr] md:gap-12 md:py-10"
+            >
+              <div>
+                <h3 className="text-base font-medium text-primary">{item.company}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.duration}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{item.location}</p>
+              </div>
+              <div>
+                <h4 className="font-[var(--font-display)] text-xl font-medium text-foreground sm:text-2xl">{item.title}</h4>
+                <ul className="mt-5 space-y-3">
+                  {item.achievements.map((achievement) => (
+                    <li key={achievement} className="flex items-start gap-3 text-sm leading-7 text-muted-foreground sm:text-base">
+                      <span aria-hidden="true" className="mt-3 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

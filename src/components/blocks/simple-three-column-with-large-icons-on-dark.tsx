@@ -1,129 +1,83 @@
 "use client"
 
-import { Brain, BarChart3, Bot } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 
-const features = [
-  {
-    name: 'Machine Learning & Deep Learning',
-    description:
-      'Advanced expertise in ML algorithms and neural network architectures. Specialized in computer vision, NLP, LLMs, attention mechanisms, and transformer models.',
-    skills: ['TensorFlow', 'PyTorch', 'Keras', 'Scikit-learn', 'Transformers', 'Object Detection', 'Image Segmentation'],
-    experience: '3+ years',
-    achievement: 'KVMM: Keras Vision Models library',
-    icon: Brain,
-    progress: 88,
-  },
-  {
-    name: 'Agentic AI',
-    description:
-      'Building intelligent AI agents and conversational systems. Expert in RAG architectures, LLM integration, and document processing with advanced NLP capabilities.',
-    skills: ['LangChain', 'HuggingFace', 'Groq', 'LlamaIndex', 'RAG'],
-    experience: '2+ years',
-    achievement: 'Chat with PDFs using LLMs',
-    icon: Bot,
-    progress: 75,
-  },
-  {
-    name: 'Full-Stack Development',
-    description:
-      'End-to-end web application development with modern frameworks. Expert in building scalable applications with cloud infrastructure and security best practices.',
-    skills: ['React.js', 'JavaScript', 'Typescript', 'AWS', 'GraphQL'],
-    experience: '1 year',
-    achievement: 'Production deployments at Fiserv',
-    icon: BarChart3,
-    progress: 80,
-  },
+const groups = [
+  { name: 'Languages', skills: ['Python|python', 'C++|cplusplus', 'TypeScript|typescript', 'JavaScript|javascript', 'SQL'] },
+  { name: 'Web & Application Development', skills: ['React.js|react', 'FastAPI|fastapi', 'GraphQL|graphql'] },
+  { name: 'ML & Deep Learning', skills: ['PyTorch|pytorch', 'TensorFlow|tensorflow', 'Keras 3|keras', 'JAX|jax', 'Hugging Face Transformers|huggingface', 'NumPy|numpy', 'Pandas|pandas', 'OpenCV|opencv', 'Computer Vision', 'Diffusion Models'] },
+  { name: 'LLM Training & Inference', skills: ['vLLM|vllm', 'TensorRT-LLM|nvidia', 'Triton|triton', 'CUDA|nvidia', 'XLA', 'Quantization (INT8/INT4/FP8)', 'LoRA', 'PEFT|huggingface', 'SFT', 'GRPO', 'KV Cache Optimization', 'FlashAttention', 'Model Serving'] },
+  { name: 'Agentic AI', skills: ['LangChain|langchain', 'LangGraph|langgraph', 'LlamaIndex|llamaindex', 'CrewAI|crewai', 'OpenAI Agents SDK|openai', 'Retrieval-Augmented Generation (RAG)', 'MCP|modelcontextprotocol'] },
+  { name: 'MLOps & Cloud', skills: ['Docker|docker', 'Linux|linux', 'Git|git', 'GitHub Actions|githubactions', 'CI/CD|cicd', 'AWS Lambda|awslambda', 'AWS API Gateway|amazonapigateway', 'AWS S3|amazons3', 'GCP|googlecloud', 'MongoDB|mongodb', 'Neo4j|neo4j', 'Chroma|chroma'] },
 ]
 
-export default function SimpleThreeColumnWithLargeIconsOnDark() {
+function Skill({ value }: { value: string }) {
+  const [name, logo] = value.split('|')
+  const colors: Record<string, string> = { python: '#3776AB', cplusplus: '#00599C', typescript: '#3178C6', javascript: '#F7DF1E', react: '#61DAFB', fastapi: '#009688', graphql: '#E10098', numpy: '#4DABCF', pandas: '#B19CD9', opencv: '#5C3EE8', pytorch: '#EE4C2C', tensorflow: '#FF6F00', keras: '#D00000', huggingface: '#FFD21E', nvidia: '#76B900', langchain: '#65C8B0', langgraph: '#65C8B0', crewai: '#FF5A50', openai: '#74AA9C', modelcontextprotocol: '#F5F5F5', docker: '#2496ED', linux: '#FCC624', git: '#F05032', githubactions: '#2088FF', awslambda: '#FF9900', amazonapigateway: '#FF4F8B', amazons3: '#569A31', googlecloud: '#4285F4', mongodb: '#47A248', neo4j: '#4581C3', chroma: '#FFCC66' }
+  const devicons: Record<string, string> = { triton: 'triton', cicd: 'cicd', llamaindex: 'llamaindex', chroma: 'chroma', vllm: 'vllm', jax: 'jax', huggingface: 'huggingface', python: 'python', cplusplus: 'cplusplus', typescript: 'typescript', javascript: 'javascript', react: 'react', fastapi: 'fastapi', graphql: 'graphql', numpy: 'numpy', pandas: 'pandas', opencv: 'opencv', pytorch: 'pytorch', tensorflow: 'tensorflow', keras: 'keras', docker: 'docker', linux: 'linux', git: 'git', githubactions: 'githubactions', googlecloud: 'googlecloud', mongodb: 'mongodb', neo4j: 'neo4j' }
+  const [failed, setFailed] = useState(false)
   return (
-    <div style={{ backgroundColor: '#0a0a0a' }} className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-[var(--font-display)] font-semibold tracking-tight text-pretty text-white sm:text-5xl">
-              Core Expertise
-            </h2>
-            <div className="mt-2 h-1 w-24" style={{ backgroundColor: '#00ff88' }}></div>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg/8"
-            style={{ color: '#a0a0a0' }}
-          >
-            Comprehensive AI/ML expertise spanning from traditional machine learning to cutting-edge deep learning architectures and scalable data science solutions.
-          </motion.p>
-        </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="flex flex-col"
-              >
-                <dt className="text-base/7 font-semibold text-white font-[var(--font-display)]">
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-lg" style={{ backgroundColor: '#00ff88' }}>
-                    <feature.icon aria-hidden="true" className="size-7 text-black" />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base/7" style={{ color: '#a0a0a0' }}>
-                  <p className="flex-auto">{feature.description}</p>
-                  
-                  <div className="mt-4 space-y-3">
-                    <div>
-                      <p className="text-sm font-medium text-white">Experience: {feature.experience}</p>
-                      <p className="text-sm" style={{ color: '#00ff88' }}>{feature.achievement}</p>
-                    </div>
-                    
-                    <div>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-white">Proficiency</span>
-                        <span style={{ color: '#00ff88' }}>{feature.progress}%</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${feature.progress}%` }}
-                          transition={{ duration: 1.5, delay: 0.5 + 0.2 * index, ease: "easeOut" }}
-                          className="h-2 rounded-full"
-                          style={{ backgroundColor: '#00ff88' }}
-                        ></motion.div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {feature.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-2 py-1 text-xs rounded-md border"
-                          style={{ 
-                            backgroundColor: '#1a1a1a',
-                            borderColor: '#00ff88',
-                            color: '#00ff88'
-                          }}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </dd>
-              </motion.div>
-            ))}
-          </dl>
-        </div>
-      </div>
+    <div className="skill-tile flex shrink-0 items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 transition-colors hover:border-primary/50 hover:bg-primary/5">
+      {logo && !devicons[logo] && <span aria-hidden="true" className="h-7 w-7 shrink-0" style={{ backgroundColor: colors[logo] || '#b5c9bc', maskImage: `url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${logo}.svg)`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center' }} />}
+      {logo && devicons[logo] && !failed && <img src={logo === 'triton' ? '/images/triton-logo.png' : logo === 'cicd' ? '/images/cicd.png' : logo === 'llamaindex' ? '/images/llamaindex.png' : logo === 'chroma' ? '/images/chroma.png' : logo === 'vllm' ? '/images/vllm.png' : logo === 'jax' ? '/images/jax.png' : logo === 'huggingface' ? '/images/huggingface.png' : logo === 'graphql' ? '/images/graphql.png' : devicons[logo] ? `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${devicons[logo]}/${devicons[logo]}-original.svg` : `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${logo}.svg`} alt="" width={28} height={28} className="h-7 w-7 shrink-0 object-contain" loading="lazy" onError={() => setFailed(true)} />}
+      <span className="whitespace-nowrap text-sm font-medium text-foreground">{name}</span>
     </div>
   )
 }
+
+export default function SimpleThreeColumnWithLargeIconsOnDark() {
+  const [paused, setPaused] = useState(false)
+  return (
+    <section className="overflow-hidden bg-background py-20">
+      <div className="mx-auto mb-12 flex max-w-6xl flex-wrap items-start justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        <div>
+          <h2 className="font-[var(--font-display)] text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Skills &amp; Tech</h2>
+          <p className="mt-5 text-base text-muted-foreground">The tools behind the work.</p>
+        </div>
+        <button type="button" onClick={() => setPaused(!paused)} aria-pressed={paused} className="rounded-full border border-border px-5 py-3 text-sm text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary">{paused ? 'Resume motion' : 'Pause motion'}</button>
+      </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><div className="space-y-5 overflow-hidden rounded-3xl border border-border bg-card/30 py-6">
+        {groups.map((group, index) => (
+          <div key={group.name}>
+            <h3 className="mx-auto mb-3 max-w-6xl px-4 text-xs font-medium uppercase tracking-widest text-primary sm:px-6 lg:px-8">{group.name}</h3>
+            <div className="skill-ribbon overflow-hidden py-2" style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
+              <div className={`skill-track flex w-max ${index % 2 ? 'skill-reverse' : ''}`} style={{ animationDuration: `${group.skills.length * Math.max(1, Math.ceil(16 / group.skills.length)) * 6}s`, animationPlayState: paused ? 'paused' : 'running' }}>
+                {[0, 1].map(copy => (
+                  <div key={copy} className="flex shrink-0 gap-4 pr-4" aria-hidden={copy === 1 ? true : undefined}>
+                    {Array.from({ length: Math.max(1, Math.ceil(16 / group.skills.length)) }, (_, repeat) => group.skills.map(skill => <Skill key={`${repeat}-${skill}`} value={skill} />))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      </div>
+      <style jsx>{`
+        .skill-track { animation: skills-scroll linear infinite; }
+        .skill-reverse { animation-direction: reverse; }
+        .skill-ribbon:hover .skill-track { animation-play-state: paused !important; }
+        @keyframes skills-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) {
+          .skill-track { animation: none; width: auto; }
+          .skill-track > div:first-child { flex-wrap: wrap; justify-content: center; padding: 0 20px; }
+          .skill-track > div[aria-hidden] { display: none; }
+          .skill-ribbon { mask-image: none !important; }
+        }
+      `}</style>
+    </section>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

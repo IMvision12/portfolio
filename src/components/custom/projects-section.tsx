@@ -1,215 +1,51 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import type { Variants } from 'framer-motion'
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Github, BarChart3, Zap, Activity, TrendingUp } from "lucide-react"
+import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
-  {
-    title: "</> txtcode",
-    description: "txtcode lets you text AI coding agents like Claude Code, Cursor CLI, Gemini CLI, or OpenAI Codex from apps like WhatsApp or Telegram so your message turns into real code running on your machine. 🚀",
-    image: "/images/logo.jpg",
-    tags: ["Typescript", "cli", "agentic ai"],
-    github: "https://github.com/IMvision12/txtcode",
-  },
-  {
-    title: "ZeroModels",
-    description: "ZeroModels: Open-source Keras 3 collection of pretrained models across Vision, VLM, Depth, Speech, and more",
-    image: "/images/keras.jpg",
-    tags: ["Keras3", "Timm", "Transfromers"],
-    github: "https://github.com/IMvision12/ZeroModels",
-  },
-  {
-    title: "InferML",
-    description: "Electron desktop app for running any HuggingFace model locally. Browse the Hub, download, and execute -> object detection, segmentation, classification, ASR, image captioning, VLM chat, text generation, text-to-image, on your own machine via a Python sidecar.",
-    image: "/images/inferml.png",
-    tags: ["ElectronJS", "ReactJS", "Transformers", "HuggingFace"],
-    github: "https://github.com/IMvision12/InferML",
-  },
-  {
-    title: "Trinix 🚀",
-    description: "Triton-accelerated PyTorch layers with automatic fallback optimization. Trinix intelligently selects between Flash Attention, Triton kernels, and PyTorch backends based on hardware capabilities and workload characteristics, with graceful fallback for maximum compatibility.",
-    image: "/images/triton.png",
-    tags: ["Pytorch", "Triton", "Flash Attention"],
-    github: "https://github.com/IMvision12/trinix",
-  },
+  { title: 'LaMoE', focus: 'Hybrid language model', stack: 'PyTorch · MoE · SFT', description: 'A 247.65M-parameter language model pretrained on 25.5B tokens, combining MLA, Gated DeltaNet, and mixture-of-experts.', github: 'https://github.com/IMvision12/LaMoE', color: '#00dda4', label: '247.65M', detail: 'PARAMETERS', nodes: ['MLA', 'GDN', 'MoE'] },
+  { title: 'ZeroModels', focus: 'Model ecosystem', stack: 'Keras 3 · JAX · PyTorch', description: 'Pretrained models across vision, language, depth, and speech, built for the Keras 3 multi-backend ecosystem.', github: 'https://github.com/IMvision12/ZeroModels', color: '#44cfbe', label: 'ZeroModels', detail: 'ONE ECOSYSTEM · MULTIPLE BACKENDS', nodes: ['JAX', 'Torch', 'TF'] },
+  { title: 'txtcode', focus: 'Coding agent tooling', stack: 'TypeScript · CLI · Agents', description: 'Text AI coding agents through WhatsApp or Telegram and turn your messages into code running on your machine.', github: 'https://github.com/IMvision12/txtcode', color: '#ab8aff', label: '</> txtcode', detail: 'MESSAGE → AGENT → CODE', nodes: ['Text', 'Agent', 'Code'] },
+  { title: 'InferML', focus: 'Local inference', stack: 'Electron · React · Transformers', description: 'Browse, download, and run Hugging Face models locally through a desktop interface and Python sidecar.', github: 'https://github.com/IMvision12/InferML', color: '#56baff', label: 'Local first.', detail: 'MODELS ON YOUR MACHINE', nodes: ['Hub', 'Local', 'Run'] },
+  { title: 'Trinix', focus: 'GPU acceleration', stack: 'Triton · PyTorch', description: 'Triton-accelerated PyTorch layers with automatic fallback across Flash Attention, Triton kernels, and PyTorch backends.', github: 'https://github.com/IMvision12/trinix', color: '#818aff', label: 'Accelerate.', detail: 'GPU KERNELS · SMART FALLBACKS', nodes: ['Torch', 'Triton', 'GPU'] },
 ]
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
-}
-
-const cardVariants: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.95
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-}
-
-const progressVariants: Variants = {
-  hidden: { width: 0 },
-  visible: (percentage: number) => ({
-    width: `${percentage}%`,
-    transition: {
-      duration: 1.5,
-      delay: 0.5,
-      ease: "easeOut"
-    }
-  })
-}
 
 export default function ProjectsSection() {
   return (
-    <section className="bg-background py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-[var(--font-display)] mb-4">
-            Featured Projects
-          </h2>
-          <motion.div 
-            className="w-20 h-1 bg-primary mx-auto rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        </motion.div>
-
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+    <section className="bg-background px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="font-[var(--font-display)] text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Projects</h2>
+        <p className="mt-5 text-base text-muted-foreground">Engineering and research, in one place</p>
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -6,
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
-            >
-              <Card className="bg-card border-border overflow-hidden group hover:bg-card/80 transition-all duration-300">
-                <div className="relative overflow-hidden">
-                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center min-h-[200px]">
-                    {project.image ? (
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-auto object-contain max-h-[300px]"
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          target.style.display = 'none';
-                          const fallbackDiv = document.createElement('div');
-                          fallbackDiv.className = 'w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center';
-                          target.parentElement?.appendChild(fallbackDiv);
-                        }}
-                      />
-                    ) : (
-                      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
-                        {index === 0 && <BarChart3 className="w-8 h-8 text-primary" />}
-                        {index === 1 && <Zap className="w-8 h-8 text-primary" />}
-                        {index === 2 && <Activity className="w-8 h-8 text-primary" />}
-                        {index === 3 && <TrendingUp className="w-8 h-8 text-primary" />}
-                      </div>
-                    )}
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <motion.article key={project.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.05 }} className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/40">
+              <div className="project-scene relative flex aspect-[16/10] flex-col items-center justify-center overflow-hidden border-b border-border" style={{ '--scene-color': project.color } as React.CSSProperties} aria-hidden="true">
+                <div className="scene-grid absolute inset-0" />
+                <div className="scene-glow absolute inset-0" />
+                <span className="relative mb-3 font-[var(--font-display)] text-2xl font-semibold tracking-tight text-white">{project.label}</span>
+                <span className="relative text-[9px] tracking-[0.18em] text-white/60">{project.detail}</span>
+                <div className="relative mt-7 flex items-center gap-2">
+                  {project.nodes.map((node, i) => <div key={node} className="flex items-center gap-2">{i > 0 && <span className="h-px w-3 bg-white/30" />}<span className="scene-node rounded border px-3 py-2 text-[10px] text-white/90">{node}</span></div>)}
                 </div>
-
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-foreground font-[var(--font-display)] mb-2 group-hover:text-primary transition-colors duration-300">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-secondary-foreground mb-3 leading-relaxed text-sm">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.tags.map((tag) => (
-                      <Badge 
-                        key={tag}
-                        variant="secondary"
-                        className="text-xs bg-secondary/50 text-secondary-foreground border-border hover:bg-primary/20 hover:text-primary transition-colors duration-300"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-2">
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      className="flex-1 h-8 text-xs border-border hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                      asChild
-                    >
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-3 h-3 mr-1.5" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      className="flex-1 h-8 text-xs bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
-                      asChild
-                    >
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <p className="text-[10px] uppercase tracking-widest text-primary">{project.focus}</p>
+                <h3 className="mt-2 font-[var(--font-display)] text-xl font-semibold text-foreground">{project.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
+                <p className="mt-5 text-xs leading-5 text-muted-foreground">{project.stack}</p>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code`} className="mt-4 inline-flex min-h-11 items-center justify-between border-t border-border pt-3 text-xs text-foreground transition-colors hover:text-primary">View code <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+              </div>
+            </motion.article>
           ))}
-        </motion.div>
-
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <a href="https://github.com/IMvision12" target="_blank" rel="noopener noreferrer">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-            >
-              View All Projects
-            </Button>
-          </a>
-        </motion.div>
+        </div>
       </div>
+      <style jsx>{`
+        .project-scene { background: #091512; }
+        .scene-grid { background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px); background-size: 28px 28px; transform: perspective(400px) rotateX(45deg) scale(1.5); transform-origin: center bottom; }
+        .scene-glow { background: radial-gradient(ellipse at 50% 80%, color-mix(in srgb, var(--scene-color) 28%, transparent), transparent 75%); }
+        .scene-node { border-color: color-mix(in srgb, var(--scene-color) 45%, transparent); background: color-mix(in srgb, var(--scene-color) 12%, #091512); box-shadow: 0 6px 22px color-mix(in srgb, var(--scene-color) 12%, transparent); }
+      `}</style>
     </section>
   )
-
 }

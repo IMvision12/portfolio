@@ -51,7 +51,7 @@ const contributions = [
   },
   {
     name: 'HuggingFace Transformers',
-    description: 'Contributed optimizations for vision transformer implementations, documentation improvements, and enhanced testing coverage.',
+    description: 'Improved multimodal generation and vision-language preprocessing, enabling batched audio generation and correcting image resize parity.',
     role: 'Contributor',
     stats: {
       prs: '3+'
@@ -59,9 +59,8 @@ const contributions = [
     link: 'https://github.com/huggingface/transformers',
     tags: ['Transformers', 'NLP', 'PyTorch'],
     highlights: [
-      'Implemented comprehensive tokenization tests for LED model architecture',
-      'Enhanced type safety by adding PyTorch-specific type hints',
-      'Added missing tokenization test coverage for ELECTRA model',
+      'Fixed Hunyuan-VL PIL image resize parity with reference preprocessing (#47233).',
+      'Added support for batched Qwen2.5/3-Omni audio generation (#47186).',
     ]
   },
 ]
